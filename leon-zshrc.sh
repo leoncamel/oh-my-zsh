@@ -45,7 +45,7 @@ case "$(hostname)" in
         ;;
     "leon-new-desktop")
         export ZSH_THEME="bira"
-        plugins=(svn rvm github switch-net-env dev-env)
+        plugins=(svn rvm github pip switch-net-env dev-env ghc)
         echo "Load Plugins for $my_host_name"
         echo "  Plugins: $plugins"
         ;;
