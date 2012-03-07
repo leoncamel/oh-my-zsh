@@ -88,7 +88,9 @@ _cabal_configure ()
         {-g,--ghc}'[Compile with GHC]' \
         '--nhc98[Compile with NHC]' \
         '--jhc[Compile with JHC]' \
+        '--lhc[Compile with LHC]' \
         '--hugs[Compile with Hugs]' \
+        '--uhc[Compile with UHC]' \
         {-w,--with-compiler=}'[Give the path to a particular compiler]:file:_files' \
         '--with-hc-pkg=[Give the path to the package tool]:file:_files' \
         '--prefix=[Take this prefix in preparation of installation]:directory:_files -/' \
@@ -128,6 +130,8 @@ _cabal_configure ()
         '--extra-include-dirs=[A list of directories to search for header files]:directory:_files -/' \
         '--extra-lib-dirs=[A list of directories to search for externallibraries]:directory:_files -/' \
         '--constraint=[A list of additional constraints on the dependencies]' \
+        '--enable-tests[Enable dependency checking and compilation for test suites listed in the package description file.]' \
+        '--disable-tests[Disable dependency checking and compilation for test suites listed in the package description file.]' \
         '--cabal-lib-version=[Select which version of the Cabal lib to use]' \
         '--preference=[Specify preferences on the version of a package]'    
 }
@@ -208,7 +212,9 @@ _cabal_install ()
         {-g,--ghc}'[Compile with GHC]' \
         '--nhc98[Compile with NHC]' \
         '--jhc[Compile with JHC]' \
+        '--lhc[Compile with LHC]' \
         '--hugs[Compile with Hugs]' \
+        '--uhc[Compile with UHC]' \
         {-w,--with-compiler=}'[Give the path to a particular compiler]:file:_files' \
         '--with-hc-pkg=[Give the path to the package tool]:file:_files' \
         '--prefix=[Take this prefix in preparation of installation]:directory:_files -/' \
@@ -248,19 +254,25 @@ _cabal_install ()
         '--extra-include-dirs=[A list of directories to search for header files]:directory:_files -/' \
         '--extra-lib-dirs=[A list of directories to search for externallibraries]:directory:_files -/' \
         '--constraint=[A list of additional constraints on the dependencies]' \
+        '--enable-tests[Enable dependency checking and compilation for test suites listed in the package description file.]' \
+        '--disable-tests[Disable dependency checking and compilation for test suites listed in the package description file.]' \
         '--cabal-lib-version=[Select which version of the Cabal lib to use]' \
         '--preference=[Specify preferences on the version of a package]' \
         \
         '--enable-documentation[Enable building of documentation]' \
         '--disable-documentation[Disable building of documentation]' \
+        '--doc-index-file=[A central index of haddock API documentation (template cannot use $pkgid)]' \
         '--dry-run[Do not install anything]' \
         '--reinstall[Always install]' \
+        '--upgrade-dependencies[Pick the latest version for all dependencies, rather than trying to pick an installed version.]' \
+        '--only-dependencies[Install only the dependencies necessary to build the given packages]' \
         '--root-cmd=[Command used to gain root privileges]::' \
         '--symlink-bindir=[Add symlinks into this directory]:directory:_files -/' \
         '--build-summary=[Save build summaries to file]:file:_files' \
         '--build-log=[Log all builds to file]:file:_files' \
         '--remote-build-reporting=[Generate build reports to send to a remote]:level:(none anonymous detailed)' \
-        '*:package:_cabal_list_packages'        
+        '--one-shot[Do not record the packages in the world file.]' \
+        '*:package:_cabal_list_packages'
 }
 
 _cabal_list ()
