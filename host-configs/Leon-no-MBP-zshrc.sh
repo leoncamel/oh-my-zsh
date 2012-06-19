@@ -24,7 +24,7 @@ fi
 # add_my_tools "/Library/Frameworks/MacRuby.framework/Versions/Current/usr"
 
 # MacPorts root
-add_my_tools "/opt/local/"
+# add_my_tools "/opt/local/"
 
 # ghc-6.12.3
 #add_my_tools "$HOME/bin/ghc-6.12.3/"
@@ -37,7 +37,7 @@ alias hsenv="virthualenv"
 #add_my_tools "$HOME/bin/node-git/"
 
 # Leon's Misc Utilities
-add_my_tools "$HOME/bin/proxytunnel-1.9.0/"
+# add_my_tools "$HOME/bin/proxytunnel-1.9.0/"
 add_my_tools "$HOME/bin/cmucl-20b/"
 add_my_tools "$HOME/bin/ccl-darwin-1.6/"
 
@@ -107,13 +107,16 @@ alias df='df -a'
 export PATH="$HOME/bin/homebrew/share/python:$PATH"
 
 # autoenv from homebrew
-source "/Users/leoncamel/bin/homebrew/Cellar/autoenv/0.1.0/activate.sh"
+# source "/Users/leoncamel/bin/homebrew/Cellar/autoenv/0.1.0/activate.sh"
 
 #
 # Texlive 2011
 #
 # TODO: pstopdf can not work?
 export PATH="/usr/local/texlive/2011/bin/x86_64-darwin/:$PATH"
+
+# ida advanced pro 5.2
+export PATH="/opt/idaadv/:$PATH"
 
 ################################################################################
 ## alias
@@ -123,8 +126,14 @@ export PATH="/usr/local/texlive/2011/bin/x86_64-darwin/:$PATH"
 # coreutils alias
 #alias find='gfind'
 alias pyv-activate='source ~/pyvirt/bin/activate'
-alias ec='emacsclient -n'
 alias rsync='rsync --progress'
+
+# emacs & emacsclient
+# reference : http://qiita.com/items/609681b9635e5563d4a9
+alias ec='emacsclient -n'
+function ec-readonly() {
+    emacsclient -e "(find-file-read-only \"$1\")"
+}
 
 # Mac OSX's alias
 alias chrome_proxy='open -a /Applications/Internet/Google\ Chrome.app --args --proxy-server=133.9.49.250:8080 --proxy-bypass-list=localhost,127.0.0.0/8,*.local,192.168.0.0/16,13'
