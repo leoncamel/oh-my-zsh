@@ -46,7 +46,7 @@ switch-net-env() {
 mac-proxy-net-env() {
     emulate -L zsh  # TODO: Necessary or not?
     local usage
-    usage='osx-net-env {on,off}'
+    usage='osx-net-env {eth,air} {on,off}'
 
     case `uname -s` in
         ("Darwin")
@@ -57,34 +57,62 @@ mac-proxy-net-env() {
             ;;
     esac
 
+    local intf
     case $1 in
+        ("")
+            intf="Ethernet"
+            ;;
+        ("eth")
+            intf="Ethernet"
+            ;;
+        ("air")
+            intf="Wi-Fi"
+            ;;
+    esac
+
+    case $2 in
         ("")
             printf '%s\n' 'Enable/Disable proxy(http,https,ftp) settings on Ethernet.'
             printf '%s\n' 'Usage:'
             printf '\t\t%s\n\n\n' ${usage} && return 1
             ;;
         (on)
-            # networksetup -setftpproxy Ethernet 133.9.49.250 8080 on
-            # networksetup -setwebproxy Ethernet 133.9.49.250 8080 on
-            # networksetup -setsecurewebproxystate Ethernet 133.9.49.250 8080 on
-            networksetup -setftpproxystate Ethernet on
-            networksetup -setwebproxystate Ethernet on
-            networksetup -setsecurewebproxystate Ethernet on
-            printf '%s\n\n' 'networksetup : Enable proxy setting on Ethernet'
+            # networksetup -setftpproxy ${intf} 133.9.49.250 8080 on
+            # networksetup -setwebproxy ${intf} 133.9.49.250 8080 on
+            # networksetup -setsecurewebproxystate ${intf} 133.9.49.250 8080 on
+            networksetup -setftpproxystate ${intf} on
+            networksetup -setwebproxystate ${intf} on
+            networksetup -setsecurewebproxystate ${intf} on
+            printf 'networksetup : Enable proxy setting on %s\n\n' ${intf}
             ;;
         (off)
-            # networksetup -setftpproxy Ethernet 133.9.49.250 8080 off
-            # networksetup -setwebproxy Ethernet 133.9.49.250 8080 off
-            # networksetup -setsecurewebproxystate Ethernet 133.9.49.250 8080 off
-            networksetup -setftpproxystate Ethernet off
-            networksetup -setwebproxystate Ethernet off
-            networksetup -setsecurewebproxystate Ethernet off
-            printf '%s\n\n' 'networksetup : Disable proxy setting on Ethernet'
+            # networksetup -setftpproxy ${intf} 133.9.49.250 8080 off
+            # networksetup -setwebproxy ${intf} 133.9.49.250 8080 off
+            # networksetup -setsecurewebproxystate ${intf} 133.9.49.250 8080 off
+            networksetup -setftpproxystate ${intf} off
+            networksetup -setwebproxystate ${intf} off
+            networksetup -setsecurewebproxystate ${intf} off
+            printf 'networksetup : Disable proxy setting on %s\n\n' ${intf}
     esac
 }
 
+#
+# completion
+#
+
+function _mac-proxy-net-env {
+
+    _arguments \
+        '1:media:(eth air)' \
+        '2:status:(on off)'
+
+    return 1;
+}
+
 compdef 'compadd home waseda mitmproxy' switch-net-env
-compdef 'compadd on off' mac-proxy-net-env
+# compdef 'compadd on off' mac-proxy-net-env
+compdef _mac-proxy-net-env mac-proxy-net-env
+
 
 ## END OF FILE #################################################################
 # vim:filetype=zsh foldmethod=marker autoindent expandtab shiftwidth=4
