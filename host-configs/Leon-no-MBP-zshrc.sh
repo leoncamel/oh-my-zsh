@@ -60,10 +60,14 @@ export PATH="$HOME/bin/GoogleAppEngine/":$PATH
 export PATH="$HOME/bin/AllegroCL/":$PATH
 
 # Racket-v5.2
-add_my_tools "$HOME/bin/Racket-v5.2/"
+add_my_tools "$HOME/bin/Racket-v5.2.1/"
 
 # cmigemo
 add_my_tools "$HOME/bin/cmigemo/"
+
+# clojurescript
+export CLOJURESCRIPT_HOME="$HOME/haskell/clojure/clojurescript.git/"
+add_my_tools "$CLOJURESCRIPT_HOME"
 
 # Macport's emacs : for "emacsclient"
 #export PATH="/Applications/MacPorts/Emacs.app/Contents/MacOS/bin/":$PATH
@@ -83,7 +87,7 @@ add_my_tools "$HOME/bin/cmigemo/"
 
 ##########
 # homebrew
-alias emacs-app="open -a /Users/leoncamel/bin/homebrew/Cellar/emacs/HEAD/Emacs.app"
+#alias emacs-app="open -a /Users/leoncamel/bin/homebrew/Cellar/emacs/HEAD/Emacs.app"
 export HOMEBREW_EDITOR="emacsclient -n"
 export HOMEBREW_KEEP_INFO=1
 export HOMEBREW_VERBOSE=1
@@ -104,10 +108,23 @@ alias rm='rm -i'
 alias df='df -a'
 
 # python from homebrew
+export PYTHONPATH=$PYTHONPATH:"$HOME/bin/shogun-git/lib/python2.7/dist-packages/"
 export PATH="$HOME/bin/homebrew/share/python:$PATH"
+
+# ruby from homebrew
+# export PATH="$HOME/bin/homebrew/Cellar/ruby/1.9.3-p194/bin:$PATH"
 
 # autoenv from homebrew
 # source "/Users/leoncamel/bin/homebrew/Cellar/autoenv/0.1.0/activate.sh"
+
+# ocamlbrew
+export OCAMLBREW_BASE="$HOME/opt/ocamlbrew"
+export OCAML_BASE="$HOME/opt/ocamlbrew/ocaml-4.00.1"
+export ODB_BUILD_DIR="$HOME/opt/ocamlbrew/ocaml-4.00.1/build/odb"
+# export OCAML_MAJOR_VERSION=4
+# export OCAML_MINOR_VERSION=00
+# export OCAML_PATCH_VERSION=0
+add_my_tools "$HOME/opt/ocamlbrew/ocaml-4.00.1/"
 
 #
 # Texlive 2011
@@ -117,6 +134,9 @@ export PATH="/usr/local/texlive/2011/bin/x86_64-darwin/:$PATH"
 
 # ida advanced pro 5.2
 export PATH="/opt/idaadv/:$PATH"
+
+# intel icc
+export INTEL_LICENSE_FILE=/opt/intel/EVAL_A_CMP_CPP_VTKR-XHHZ6RGT.lic
 
 ################################################################################
 ## alias
