@@ -39,7 +39,7 @@ case "$(hostname)" in
     "Leon-no-MBP")
         # export ZSH_THEME="robbyrussell"
         export ZSH_THEME="xiong-chiamiov-plus"
-        plugins=(osx macports svn rvm git github autojump brew pip switch-net-env ghc)
+        plugins=(osx macports svn rvm git github autojump brew pip switch-net-env splayerx ghc)
         echo "Load Plugins for $my_host_name"
         echo "  Plugins: $plugins"
         ;;
