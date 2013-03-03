@@ -39,7 +39,8 @@ case "$(hostname)" in
     "Leon-no-MBP")
         # export ZSH_THEME="robbyrussell"
         export ZSH_THEME="xiong-chiamiov-plus"
-        plugins=(osx macports svn rvm git github autojump brew pip switch-net-env splayerx ghc)
+        # plugins=(osx macports svn rvm git github autojump brew pip switch-net-env splayerx ghc)
+        plugins=(osx macports svn git github autojump brew pip switch-net-env splayerx ghc)
         echo "Load Plugins for $my_host_name"
         echo "  Plugins: $plugins"
         ;;
@@ -52,6 +53,12 @@ case "$(hostname)" in
     "slsi177")
         export ZSH_THEME="afowler"
         plugins=(svn rvm github switch-net-env dev-env)
+        echo "Load Plugins for $my_host_name"
+        echo "  Plugins: $plugins"
+        ;;
+    "xiaolin-no-mbp")
+        export ZSH_THEME="xiong-chiamiov-plus"
+        plugins=(termsupport svn rvm github switch-net-env)
         echo "Load Plugins for $my_host_name"
         echo "  Plugins: $plugins"
         ;;

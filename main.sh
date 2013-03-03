@@ -11,3 +11,4 @@ else
     source "$HOME/.oh-my-zsh/leon-zshrc.sh"
     # source "$HOME/.oh-my-zsh/simple-zshrc.sh"
 fi
+
