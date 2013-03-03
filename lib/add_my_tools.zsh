@@ -72,6 +72,10 @@ function add_my_tools() {
         p=$(strip_path "$my_toolset_root/share/man")
         export MANPATH="$p:$MANPATH"
     fi
+    if [ -d "$my_toolset_root/man/" ]; then
+        p=$(strip_path "$my_toolset_root/man")
+        export MANPATH="$p:$MANPATH"
+    fi
     if [ -d "$my_toolset_root/share/info/" ]; then
         p=$(strip_path "$my_toolset_root/share/info")
         export INFOPATH="$p:$INFOPATH"
@@ -88,13 +92,13 @@ function add_my_tools() {
     fi
 
     # TODO: Python lib path
-    if [ -d "$my_toolset_root/lib/python2.7/site-packages/" ]; then 
-        p=$(strip_path "$my_toolset_root/lib/python2.7/site-packages/")
-        export PYTHONPATH="$p:$PYTHONPATH"
-    elif [ -d "$my_toolset_root/lib/python2.6/site-packages/" ]; then
-        p=$(strip_path "$my_toolset_root/lib/python2.6/site-packages/")
-        export PYTHONPATH="$p:$PYTHONPATH"
-    fi
+    # if [ -d "$my_toolset_root/lib/python2.7/site-packages/" ]; then 
+    #     p=$(strip_path "$my_toolset_root/lib/python2.7/site-packages/")
+    #     export PYTHONPATH="$p:$PYTHONPATH"
+    # elif [ -d "$my_toolset_root/lib/python2.6/site-packages/" ]; then
+    #     p=$(strip_path "$my_toolset_root/lib/python2.6/site-packages/")
+    #     export PYTHONPATH="$p:$PYTHONPATH"
+    # fi
 }
 
 function del_path() {
@@ -116,7 +120,7 @@ function del_my_tools() {
     local my_toolset_root=$1
 
     export PATH=$(del_path $PATH "$my_toolset_root/bin" "$my_toolset_root/sbin")
-    export MANPATH=$(del_path $MANPATH "$my_toolset_root/share/man")
+    export MANPATH=$(del_path $MANPATH "$my_toolset_root/share/man" "$my_toolset_root/man")
     export INFOPATH=$(del_path $INFOPATH "$my_toolset_root/share/info")
     
     export LD_LIBRARY_PATH=$(del_path $LD_LIBRARY_PATH "$my_toolset_root/lib/")
