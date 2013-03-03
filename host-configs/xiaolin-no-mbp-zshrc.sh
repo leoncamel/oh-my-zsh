@@ -7,7 +7,6 @@
 # add "/usr/local/bin" to $PATH
 #
 export PATH=/usr/local/bin/:$PATH
-
 export PATH=/usr/X11/bin:$PATH
 
 #
@@ -78,6 +77,10 @@ fi
 # CUDA SDK
 #export PATH=/usr/local/cuda/bin:$PATH
 #export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
+
+# TODO: move to plugins, like "plugins/rake/rake.plugin.zsh"
+# noglob : referenc : http://travisjeffery.com/b/2012/01/zshs-extended-glob-and-octopresss-new-post-script/
+alias scp="noglob scp"
 
 # RVM
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
